@@ -1,25 +1,67 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-@import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
-
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+.input {
+  width: 255px;
+  height: 40px;
+  border-radius: 4px;
+  background: #FFF;
+  border: 1px solid #808080;
+  margin-bottom: 32px;
+  margin-right: 8px;
+  margin-top: 36px;
+  margin-left: 156px;
+  cursor: pointer;
+  outline: none;
+  color: #2E2F42;
+  font-family: Montserrat;
   font-size: 16px;
-  line-height: 24px;
   font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  padding-left: 16px;
+}
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+.input::placeholder {
+  font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #808080;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+.input:hover {
+  border: 1px solid #000000;
+}
+
+.input:focus {
+  border: 1px solid #4E75FF;
+
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: #4E75FF;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.64px;
+  cursor: pointer;
+  color: #FFFFFF;
+  border-radius: 8px;
+  border: 1px solid #4E75FF;
+  margin-top: 36px;
+  margin-bottom: 32px;
+border-radius: 8px;
+width: 91px;
+
+
+}
+
+.btn:hover {
+  background-color: #6C8CFF;
+  border: 1px solid #6C8CFF;
 }
