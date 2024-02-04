@@ -19,15 +19,19 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <form class="js-search-form">
-      <input
-        class="input"
-        type="text"
-        id="search"
-        placeholder="Search images..."
-      />
-    </form>
-    <button class="btn" type="button" data-search>Search</button>
-    <script type="module" src="./js/main.js"></script>
+    <div class="container">
+      <form class="js-search-form">
+        <input
+          class="input"
+          type="text"
+          id="search"
+          placeholder="Search images..."
+        />
+
+        <button class="btn" type="submit" data-search>Search</button>
+      </form>
+      <div class="photo-container-js" id="gallery"></div>
+    </div>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
