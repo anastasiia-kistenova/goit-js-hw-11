@@ -12,25 +12,48 @@ function clearGallery() {
   photoEl.empty();  
 }
 
+
+function showLoader() {
+
+  const loader = document.createElement('div');
+  loader.className = 'loader';
+  
+  photoEl.appendChild(loader);
+}
+
+function hideLoader() {
+ 
+  const loader = photoEl.querySelector('.loader');
+  if (loader) {
+    loader.remove();
+  }
+}
+
+
+
 function insertImages(images) {
   images.forEach(hit => {
     const imageCard = `
-      <div class="image-card">
-        <img src="${hit.webformatURL}" alt="${hit.tags}">
+      <li class="image-card">
+      <a class="image-link" href="${hit.largeImageURL}">
+        <img src="${hit.webformatURL}" alt="${hit.tags}"></a>
         <div class="image-details">
           <p class="detail">Likes ${hit.likes}</p>
           <p class="detail">Views ${hit.views}</p>
           <p class="detail">Comments ${hit.comments}</p>
           <p class="detail">Downloads ${hit.downloads}</p>
         </div>
-      </div>
+      </li>
     `;
-   photoEl.insertAdjacentHTML('beforeend', imageCard);
+
+     photoEl.insertAdjacentHTML('beforeend', imageCard);
+
   });
 }
 
 
 function performSearch(searchQuery) {
+  showLoader();
   const imageType = 'photo';
   const orientation = 'horizontal';
   const safeSearch = true;
@@ -55,6 +78,7 @@ function performSearch(searchQuery) {
       return response.json();
     })
     .then(data => {
+      hideLoader();
 
       const imageContainer = document.getElementById('gallery');
       imageContainer.innerHTML = '';
@@ -67,9 +91,14 @@ function performSearch(searchQuery) {
           views: item.views,
           comments: item.comments,
           downloads: item.downloads,
+          largeImageURL: item.largeImageURL,
         }));
 
         insertImages(images);
+
+        let lightbox = new SimpleLightbox('.image-card a', { captionsData: "alt",});
+        lightbox.refresh();
+
       } else {
         iziToast.error({
           message: "Sorry, there are no images matching your search query. Please try again!",
@@ -78,6 +107,7 @@ function performSearch(searchQuery) {
       }
     })
     .catch(error => {
+      hideLoader();
       console.error('Error during fetch:', error.message);
     });
 }
@@ -102,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
         event.target.reset();
     });
 });
+
 
 
 
